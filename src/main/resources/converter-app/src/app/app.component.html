@@ -1,0 +1,54 @@
+<div align='center'><h1>Convert values from metric to imperial and vice-versa</h1></div>
+
+<div align="center">
+<form [formGroup]="valueForm" >
+  <div class="form-group">
+    <label for="title">Value:</label>
+    <input type="number" formControlName="value" placeholder="Enter value" name="title" class="form-control"
+           id="title">
+  </div>
+</form>
+  <br/>
+
+  <form [formGroup]="measureForm" >
+    <div class="form-group">
+      <label>Choose type of measurement:</label>
+      <select formControlName="measure" class="form-control">
+        <option disabled>Select Measurement</option>
+        <option>Choose Measurement</option>
+        <option *ngFor="let measure of measureList">{{measure}}</option>
+      </select>
+      <div *ngIf="g.measure.touched && g.measure.invalid" class="alert alert-danger">
+        <div *ngIf="g.measure.errors.required">Measurement is required.</div>
+      </div>
+    </div>
+  </form>
+
+<br/>
+
+  <form [formGroup]="systemForm" >
+    <div class="form-group">
+      <label>Choose system type to convert to:</label>
+      <select formControlName="system" class="form-control">
+        <option disabled>Select System</option>
+        <option>Choose System</option>
+        <option *ngFor="let system of systemList">{{system}}</option>
+      </select>
+      <div *ngIf="f.system.touched && f.system.invalid" class="alert alert-danger">
+        <div *ngIf="f.system.errors.required">System type is required.</div>
+      </div>
+    </div>
+  </form>
+
+<br/>
+
+<div>
+  <p>
+    <button (click)="getOutput()" [disabled]="!systemForm.valid || !measureForm.valid"> Convert</button>
+  </p>
+</div>
+
+<div>
+  <h1>{{outPut}}</h1>
+</div>
+</div>
