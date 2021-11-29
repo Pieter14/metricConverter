@@ -1,6 +1,6 @@
 package com.converter.metricConverter.Services;
 
-import com.converter.metricConverter.Service.TemperatureService;
+import com.converter.metricConverter.Service.LengthService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,23 +11,23 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-public class TemperatureServiceTest {
+public class LengthServiceTest {
 
     @InjectMocks
-    private TemperatureService temperatureService;
+    private LengthService lengthService;
 
     @BeforeAll
     static void setup() {
-        MockitoAnnotations.openMocks(TemperatureService.class);
+        MockitoAnnotations.openMocks(LengthServiceTest.class);
     }
 
     @Test
-    public void degreesFahrenheit_to_CelsiusTest() {
-        assertEquals(0, temperatureService.convertToMetric(32));
+    public void mile_to_kilometerTest() {
+        assertEquals(100, lengthService.convertToMetric(62));
     }
 
     @Test
-    public void degreesCelsius_to_FahrenheitTest() {
-        assertEquals(32, temperatureService.convertToImperial(0));
+    public void kilometer_to_mileTest() {
+        assertEquals(62, lengthService.convertToImperial(100));
     }
 }
